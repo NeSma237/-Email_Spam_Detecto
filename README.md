@@ -32,6 +32,6 @@ Try the live app here:
 🧑‍💻 Authors
 Made with ❤️ by 
 Arwa Salim
-Nourhan Ibrahim
-Fajr Abo Bakr
-Nesma Nasser
+ ,Nourhan Ibrahim
+ ,Fajr Abo Bakr
+ ,Nesma Nasser

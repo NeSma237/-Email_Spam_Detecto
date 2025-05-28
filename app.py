@@ -5,18 +5,18 @@ from nltk.corpus import stopwords
 from nltk.stem import WordNetLemmatizer
 import nltk
 
-# تحميل الموارد المطلوبة
+# Download required NLTK resources
 nltk.download('stopwords')
 nltk.download('wordnet')
 nltk.download('omw-1.4')
 
-# تحميل النموذج والـ vectorizer
+# Load the model and vectorizer
 import gzip
 with gzip.open("spam_classifier_model.pkl.gz", "rb") as f:
     model = joblib.load(f)
 vectorizer = joblib.load("tfidf_vectorizer.pkl")
 
-# دوال تنظيف النص
+# Text cleaning functions
 def clean_message(message):
     message = str(message).lower()
     message = re.sub(f"[{re.escape(string.punctuation)}]", "", message)
@@ -34,17 +34,17 @@ def preprocess_message(message):
 
     return " ".join(tokens)
 
-# واجهة Streamlit
+# Streamlit UI
 st.title("📧 Email Spam Classifier")
-st.write("اكتب الإيميل وهقولك إذا كان Spam ولا Ham 😉")
+st.write("Type an email message and I'll tell you if it's Spam or Ham 😉")
 
-user_input = st.text_area("✉️ محتوى الإيميل:")
+user_input = st.text_area("✉️ Email content:")
 
-if st.button("🔍 تصنيف"):
+if st.button("🔍 Classify"):
     if user_input.strip() == "":
-        st.warning("من فضلك اكتب محتوى الإيميل الأول.")
+        st.warning("Please enter the email content first.")
     else:
         cleaned_input = preprocess_message(user_input)
         vectorized_input = vectorizer.transform([cleaned_input])
         prediction = model.predict(vectorized_input)[0]
-        st.success(f"🔎 تم تصنيفه كـ: **{prediction.upper()}**")
+        st.success(f"🔎 Classified as: **{prediction.upper()}**")

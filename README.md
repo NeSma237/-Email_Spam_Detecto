@@ -26,7 +26,7 @@ streamlit run app.py
 
 ## ☁️ Deployed Version
 Try the live app here:
-👉 [https://your-streamlit-url.streamlit.app](https://jplrzwj4bqrrbyx5km6nua.streamlit.app/)
+👉 [https://jplrzwj4bqrrbyx5km6nua.streamlit.app/]
 
 
 🧑‍💻 Authors
